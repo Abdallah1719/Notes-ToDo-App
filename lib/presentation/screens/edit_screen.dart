@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/shared/components.dart';
 import 'package:notes/styles/colors.dart';
@@ -36,6 +40,10 @@ class _EditScreenState extends State<EditScreen> {
               widget.note.title = title ?? widget.note.title;
               widget.note.subtitle = content ?? widget.note.subtitle;
               widget.note.save();
+              final bloc = BlocProvider.of<NotesCubit>(context);
+              bloc.fetchAllNotes();
+              log('FETCHED');
+              // setState(() {});
               Navigator.pop(context);
             },
             icon: const Icon(Icons.check),

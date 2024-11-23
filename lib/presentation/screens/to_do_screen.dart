@@ -59,14 +59,6 @@ class _TodoScreenState extends State<TodoScreen> {
               if (todoCubit.isBottomSheetShown) {
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
-                  // var currentDate = DateTime.now();
-                  // var formatcurrentDate =
-                  //     DateFormat('dd/mm/yy').format(currentDate);
-                  // var notemodel = NotesModel(
-                  //   title: title!,
-                  //   subtitle: content!,
-                  //   date: formatcurrentDate,
-                  // );
                   var todomodel = ToDoModel(
                       title: title!, time: time!, date: date!, status: 'new');
                   BlocProvider.of<ToDoCubit>(context).addToDo(todomodel);

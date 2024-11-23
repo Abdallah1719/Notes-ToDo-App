@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes/presentation/screens/notes_screen.dart';
 import 'package:notes/presentation/screens/to_do_screen.dart';
 import 'package:notes/styles/colors.dart';
 
@@ -31,10 +30,15 @@ class DrawerContent extends StatelessWidget {
           ),
           onHover: (value) {},
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const NotesScreen()),
-            );
+            // log('${ModalRoute.of(context)?.settings.name}');
+            if (ModalRoute.of(context)?.settings.name == null) {
+              Navigator.popUntil(context, (predicate) {
+                return predicate.settings.name == '/';
+              });
+              Navigator.pop(context);
+            } else {
+              Navigator.pop(context);
+            }
           },
           label: const Text(
             "Notes",

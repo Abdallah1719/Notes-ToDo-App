@@ -7,10 +7,12 @@ import 'package:notes/constant.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/models/to_do_model/to_do_model.dart';
 import 'package:notes/presentation/screens/notes_screen.dart';
-
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'presentation/shared/bloc_observer.dart';
 
 void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   Bloc.observer = MyBlocObserver();
   await Hive.initFlutter();
   Hive.registerAdapter(ToDoModelAdapter());
@@ -18,6 +20,7 @@ void main() async {
   await Hive.openBox<NotesModel>(knotesBox);
   await Hive.openBox<ToDoModel>(ktodoBox);
   runApp(const Notes());
+  FlutterNativeSplash.remove();
 }
 
 class Notes extends StatelessWidget {
@@ -30,10 +33,13 @@ class Notes extends StatelessWidget {
         BlocProvider(create: (context) => NotesCubit()),
         BlocProvider(create: (context) => ToDoCubit()),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: NotesScreen(),
+        home: const NotesScreen(),
+        navigatorKey: navigatorKey,
       ),
     );
   }
 }
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

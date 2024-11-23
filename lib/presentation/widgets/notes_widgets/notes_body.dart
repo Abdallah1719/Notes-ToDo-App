@@ -5,8 +5,8 @@ import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/widgets/notes_widgets/note_item.dart';
 
 class NotesBody extends StatefulWidget {
-  const NotesBody({super.key});
-
+  const NotesBody({super.key, required this.isSearcing});
+  final bool isSearcing;
   @override
   State<NotesBody> createState() => _NotesBodyState();
 }
@@ -22,8 +22,9 @@ class _NotesBodyState extends State<NotesBody> {
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
-        List<NotesModel> notes =
-            BlocProvider.of<NotesCubit>(context).notes ?? [];
+        List<NotesModel> notes = widget.isSearcing
+            ? BlocProvider.of<NotesCubit>(context).searchedForNote
+            : BlocProvider.of<NotesCubit>(context).notes ?? [];
         return ListView.builder(
           itemCount: notes.length,
           padding: const EdgeInsets.only(top: 10),

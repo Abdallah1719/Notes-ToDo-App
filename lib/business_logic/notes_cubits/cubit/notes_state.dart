@@ -10,3 +10,5 @@ class AddNoteSucsess extends NotesState {}
 class NoteSucsess extends NotesState {}
 
 class NoteOnChangeSearch extends NotesState {}
+
+class ChangeBottomSheetState extends NotesState {}

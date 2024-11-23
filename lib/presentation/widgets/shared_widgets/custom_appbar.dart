@@ -9,7 +9,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: darkBlue,
-      title:Text(
+      title: Text(
         title,
         style: const TextStyle(color: beige, fontWeight: FontWeight.bold),
       ),
@@ -26,13 +26,13 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
           );
         },
       ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.search),
-          color: beige,
-        ),
-      ],
+      // actions: [
+      //   IconButton(
+      //     onPressed: () {},
+      //     icon: const Icon(Icons.search),
+      //     color: beige,
+      //   ),
+      // ],
     );
   }
 
