@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/shared/components.dart';
@@ -20,7 +19,25 @@ class NotesScreen extends StatefulWidget {
 
 class _NotesScreenState extends State<NotesScreen> {
   var scaffoldKye = GlobalKey<ScaffoldState>();
-  final GlobalKey<FormState> formkey = GlobalKey();
+
+  late FocusNode titleFocusNode;
+  late FocusNode descFocusNode;
+
+  @override
+  void initState() {
+    titleFocusNode = FocusNode();
+    descFocusNode = FocusNode();
+    titleFocusNode.requestFocus();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    titleFocusNode.dispose();
+    descFocusNode.dispose();
+    super.dispose();
+  }
+
   String? title, content;
   void startSearching() {
     isSearching = true;
@@ -29,6 +46,7 @@ class _NotesScreenState extends State<NotesScreen> {
 
   void stopSearching() {
     BlocProvider.of<NotesCubit>(context).searchTextController.clear();
+    BlocProvider.of<NotesCubit>(context).searchedForNote.clear();
     isSearching = false;
     setState(() {});
   }
@@ -101,14 +119,14 @@ class _NotesScreenState extends State<NotesScreen> {
                   borderRadius: BorderRadius.circular(18)),
               onPressed: () {
                 if (bloc.isBottomSheetShown) {
-                  if (formkey.currentState!.validate()) {
-                    formkey.currentState!.save();
+                  if (bloc.formkey.currentState!.validate()) {
+                    bloc.formkey.currentState!.save();
                     var currentDate = DateTime.now();
-                    var formatcurrentDate =
-                        DateFormat('dd/mm/yy').format(currentDate);
+                    var formatcurrentDate = currentDate.toIso8601String();
+                    // DateFormat('dd/MM/yy').format(currentDate);
                     var notemodel = NotesModel(
-                      title: title!,
-                      subtitle: content!,
+                      title: title ?? '',
+                      subtitle: content ?? '',
                       date: formatcurrentDate,
                     );
                     BlocProvider.of<NotesCubit>(context).addNote(notemodel);
@@ -118,7 +136,8 @@ class _NotesScreenState extends State<NotesScreen> {
                   }
                 } else {
                   scaffoldKye.currentState
-                      ?.showBottomSheet((context) {
+                      ?.showBottomSheet(backgroundColor: Colors.grey[300],
+                          (context) {
                         return SingleChildScrollView(
                           padding: const EdgeInsets.only(
                             right: 20,
@@ -133,13 +152,18 @@ class _NotesScreenState extends State<NotesScreen> {
                               }
                             },
                             child: Form(
-                              key: formkey,
+                              key: bloc.formkey,
                               child: Column(
                                 children: [
                                   const SizedBox(
                                     height: 20,
                                   ),
                                   DefaultTextFormFiled(
+                                    textInputAction: TextInputAction.next,
+                                    onFieldSubmitted: (String? text) {
+                                      descFocusNode.requestFocus();
+                                    },
+                                    focusNode: titleFocusNode,
                                     onSaved: (value) {
                                       title = value;
                                     },
@@ -147,6 +171,7 @@ class _NotesScreenState extends State<NotesScreen> {
                                     maxline: 1,
                                   ),
                                   DefaultTextFormFiled(
+                                    focusNode: descFocusNode,
                                     onSaved: (value) {
                                       content = value;
                                     },
@@ -169,7 +194,7 @@ class _NotesScreenState extends State<NotesScreen> {
                   bloc.changeBottomSheetState(isShow: true, icon: Icons.add);
                 }
               },
-              backgroundColor: lightBlue,
+              backgroundColor: darkBlue,
               child: Icon(
                 bloc.fabIcon,
                 color: beige,

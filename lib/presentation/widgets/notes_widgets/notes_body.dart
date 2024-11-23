@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
@@ -23,7 +24,7 @@ class _NotesBodyState extends State<NotesBody> {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
         List<NotesModel> notes = widget.isSearcing
-            ? BlocProvider.of<NotesCubit>(context).searchedForNote
+            ? BlocProvider.of<NotesCubit>(context, listen: true).searchedForNote
             : BlocProvider.of<NotesCubit>(context).notes ?? [];
         return ListView.builder(
           itemCount: notes.length,

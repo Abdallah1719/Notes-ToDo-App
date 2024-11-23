@@ -26,7 +26,9 @@ class ToDoCubit extends Cubit<ToDoState> {
   fetchAllToDo() {
     log('/*/*/*/*/*/*/*');
     var todobox = Hive.box<ToDoModel>(ktodoBox);
-    todo = todobox.values.toList();
+    todo = todobox.values.toList()
+    ..sort(
+          (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
     emit(ToDoSucsess());
   }
 

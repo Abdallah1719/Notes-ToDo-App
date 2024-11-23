@@ -51,38 +51,39 @@ class _EditScreenState extends State<EditScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                DefaultTextFormFiled(
-                  controller: TextEditingController(text: widget.note.title),
-                  maxline: 1,
-                  onChanged: (value) {
-                    title = value;
-                  },
-                  hint: 'Title',
-                ),
-                DefaultTextFormFiled(
-                  controller: TextEditingController(text: widget.note.subtitle),
-                  maxline: 5,
-                  onChanged: (value) {
-                    content = value;
-                  },
-                  hint: 'Content',
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-              ],
+      body: Container(
+        color: Colors.grey[300],
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  DefaultTextFormFiled(
+                    controller: TextEditingController(text: widget.note.title),
+                    maxline: 1,
+                    onChanged: (value) {
+                      title = value;
+                    },
+                    hint: 'Title',
+                  ),
+                  DefaultTextFormFiled(
+                    controller:
+                        TextEditingController(text: widget.note.subtitle),
+                    maxline: 5,
+                    onChanged: (value) {
+                      content = value;
+                    },
+                    hint: 'Content',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

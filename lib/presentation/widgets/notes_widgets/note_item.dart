@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/screens/edit_screen.dart';
@@ -14,6 +15,7 @@ class NoteItem extends StatelessWidget {
   final NotesModel note;
   @override
   Widget build(BuildContext context) {
+    final date = DateFormat('dd/MM/yy').format(DateTime.parse(note.date));
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       child: GestureDetector(
@@ -53,6 +55,8 @@ class NoteItem extends StatelessWidget {
                   onPressed: () {
                     note.delete();
                     BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                    BlocProvider.of<NotesCubit>(context)
+                        .addSearchedForItemstoSearchedList('');
                   },
                   icon: const Icon(
                     Icons.delete,
@@ -67,7 +71,7 @@ class NoteItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: Text(
-                  note.date,
+                  date,
                   style: const TextStyle(
                     color: beige,
                     fontSize: 16,

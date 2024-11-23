@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/presentation/screens/to_do_screen.dart';
 import 'package:notes/styles/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DrawerContent extends StatelessWidget {
   const DrawerContent({super.key});
@@ -50,6 +51,7 @@ class DrawerContent extends StatelessWidget {
             overlayColor: Colors.white,
           ),
         ),
+        const SizedBox(height: 16),
         ElevatedButton.icon(
           icon: const Icon(
             Icons.add_circle,
@@ -71,8 +73,36 @@ class DrawerContent extends StatelessWidget {
             fixedSize: const Size(208, 43),
             overlayColor: Colors.white,
           ),
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton.icon(
+          icon: const Icon(
+            Icons.link,
+            color: beige,
+          ),
+          onHover: (value) {},
+          onPressed: () {
+            _launchUrl();
+          },
+          label: const Text(
+            "Privacy Policy",
+            style: TextStyle(fontSize: 16, color: beige),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: darkBlue,
+            fixedSize: const Size(208, 43),
+            overlayColor: Colors.white,
+          ),
         )
       ],
     );
+  }
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(Uri.parse(
+        'https://www.termsfeed.com/live/a1e18794-fae7-4bd5-8442-fafd16578812'))) {
+      throw Exception(
+          'Could not launch https://www.termsfeed.com/live/a1e18794-fae7-4bd5-8442-fafd16578812');
+    }
   }
 }

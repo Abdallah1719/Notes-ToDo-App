@@ -26,6 +26,9 @@ class _TodoScreenState extends State<TodoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime? input = datecontroller.text.isNotEmpty
+        ? DateFormat('dd/MM/yyyy').parse(datecontroller.text)
+        : null;
     return BlocConsumer<ToDoCubit, ToDoState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -60,8 +63,12 @@ class _TodoScreenState extends State<TodoScreen> {
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
                   var todomodel = ToDoModel(
-                      title: title!, time: time!, date: date!, status: 'new');
+                      title: title!,
+                      time: time!,
+                      date: input!.toIso8601String(),
+                      status: 'new');
                   BlocProvider.of<ToDoCubit>(context).addToDo(todomodel);
+                  close();
                   todoCubit.changeBottomSheetState(
                       isShow: false, icon: Icons.edit);
                 }
@@ -78,7 +85,6 @@ class _TodoScreenState extends State<TodoScreen> {
                             if (state is AddToDoSucsess) {
                               BlocProvider.of<ToDoCubit>(context)
                                   .fetchAllToDo();
-
                               Navigator.pop(context);
                             }
                           },
@@ -102,7 +108,18 @@ class _TodoScreenState extends State<TodoScreen> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                ToDoTextFormFiled(
+                                GestureDetector(
+                                  onTap: () {
+                                    showTimePicker(
+                                            context: context,
+                                            initialTime: TimeOfDay.now())
+                                        .then((value) {
+                                      timecontroller.text =
+                                          value!.format(context).toString();
+                                    });
+                                  },
+                                  child: ToDoTextFormFiled(
+                                    enabled: false,
                                     onSaved: (value) {
                                       time = value;
                                     },
@@ -110,37 +127,41 @@ class _TodoScreenState extends State<TodoScreen> {
                                     controller: timecontroller,
                                     keyboardType: TextInputType.datetime,
                                     prefix: Icons.watch_later_outlined,
-                                    onTap: () {
-                                      showTimePicker(
-                                              context: context,
-                                              initialTime: TimeOfDay.now())
-                                          .then((value) {
-                                        timecontroller.text =
-                                            value!.format(context).toString();
-                                      });
-                                    }),
+                                  ),
+                                ),
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                ToDoTextFormFiled(
-                                  onSaved: (value) {
-                                    date = value;
-                                  },
-                                  label: 'Task Date',
-                                  controller: datecontroller,
-                                  keyboardType: TextInputType.datetime,
-                                  prefix: Icons.calendar_today,
+                                GestureDetector(
                                   onTap: () {
                                     showDatePicker(
                                             context: context,
+                                            initialDate: DateTime.now(),
                                             firstDate: DateTime.now(),
-                                            lastDate:
-                                                DateTime.parse('2024-11-19'))
+                                            lastDate: DateTime.now().add(
+                                                const Duration(days: 5000)))
                                         .then((value) {
-                                      datecontroller.text =
-                                          DateFormat.yMd().format(value!);
+                                      // datecontroller.text =
+                                      // DateTime.now().toIso8601String();
+                                      if (value != null) {
+                                        datecontroller.text =
+                                            DateFormat('dd/MM/yyyy')
+                                                .format(value);
+                                        setState(() {});
+                                      }
+                                      // DateFormat('dd/MM/yyyy').format(value!);
                                     });
                                   },
+                                  child: ToDoTextFormFiled(
+                                    enabled: false,
+                                    onSaved: (value) {
+                                      date = value;
+                                    },
+                                    label: 'Task Date',
+                                    controller: datecontroller,
+                                    keyboardType: TextInputType.datetime,
+                                    prefix: Icons.calendar_today,
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 20,
@@ -153,13 +174,15 @@ class _TodoScreenState extends State<TodoScreen> {
                     })
                     .closed
                     .then((value) {
+                      close();
                       todoCubit.changeBottomSheetState(
                           isShow: false, icon: Icons.edit);
                     });
+                close();
                 todoCubit.changeBottomSheetState(isShow: true, icon: Icons.add);
               }
             },
-            backgroundColor: lightBlue,
+            backgroundColor: darkBlue,
             child: Icon(
               todoCubit.fabIcon,
               color: beige,
@@ -168,6 +191,12 @@ class _TodoScreenState extends State<TodoScreen> {
         );
       },
     );
+  }
+
+  close() {
+    titlecontroller.clear();
+    timecontroller.clear();
+    datecontroller.clear();
   }
 }
 
