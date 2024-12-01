@@ -58,6 +58,7 @@ class NoteItem extends StatelessWidget {
                     BlocProvider.of<NotesCubit>(context)
                         .addSearchedForItemstoSearchedList('');
                   },
+                  hoverColor: Colors.white.withOpacity(0.9),
                   icon: const Icon(
                     Icons.delete,
                     size: 32,
