@@ -86,3 +86,7 @@ class NoteItem extends StatelessWidget {
     );
   }
 }
+/*
+keytool -genkey -v -keystoreC:\Users\abdal\keys\upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+keytool -genkey -v -keystore C:\signed\demokey.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+*/
