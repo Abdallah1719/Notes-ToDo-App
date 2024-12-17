@@ -43,3 +43,6 @@ class Notes extends StatelessWidget {
 }
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+
+// dart run change_app_package_name:main com.notes.todo --ios
