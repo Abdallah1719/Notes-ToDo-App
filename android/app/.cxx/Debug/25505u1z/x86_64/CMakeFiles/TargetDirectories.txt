@@ -1,0 +1,2 @@
+D:/work/2025/Notes-ToDo-App/android/app/.cxx/Debug/25505u1z/x86_64/CMakeFiles/edit_cache.dir
+D:/work/2025/Notes-ToDo-App/android/app/.cxx/Debug/25505u1z/x86_64/CMakeFiles/rebuild_cache.dir

@@ -41,16 +41,19 @@ class NoteItem extends StatelessWidget {
                 contentPadding: const EdgeInsets.only(left: 20, right: 5),
                 title: Text(
                   note.title,
+                  overflow: TextOverflow
+                      .ellipsis, // إظهار ... عندما يتجاوز النص السطر
+                  maxLines: 1,
                   style: const TextStyle(
                       color: beige, fontSize: 32, fontWeight: FontWeight.w400),
                 ),
-                subtitle: Text(
-                  note.subtitle,
-                  style: const TextStyle(
-                    color: beige,
-                    fontSize: 22,
-                  ),
-                ),
+                // subtitle: Text(
+                //   note.subtitle,
+                //   style: const TextStyle(
+                //     color: beige,
+                //     fontSize: 22,
+                //   ),
+                // ),
                 trailing: IconButton(
                   onPressed: () {
                     note.delete();

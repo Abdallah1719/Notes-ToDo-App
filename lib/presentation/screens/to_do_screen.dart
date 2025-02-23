@@ -65,7 +65,7 @@ class _TodoScreenState extends State<TodoScreen> {
                   var todomodel = ToDoModel(
                       title: title!,
                       time: time!,
-                      date: input!.toIso8601String(),
+                      date: input.toString(),
                       status: 'new');
                   BlocProvider.of<ToDoCubit>(context).addToDo(todomodel);
                   close();
@@ -286,8 +286,6 @@ class _TodoScreenState extends State<TodoScreen> {
 //     );
 //   }
 // }
-
-
 
 // class BottomNavigationBarItems extends StatefulWidget {
 //   const BottomNavigationBarItems({
