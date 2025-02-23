@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
+import 'package:notes/generated/l10n.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/shared/components.dart';
 import 'package:notes/presentation/widgets/notes_widgets/note_search.dart';
@@ -67,8 +68,8 @@ class _NotesScreenState extends State<NotesScreen> {
               backgroundColor: darkBlue,
               title: isSearching
                   ? null
-                  : const Text(
-                      'Notes',
+                  : Text(
+                      S.of(context).title,
                       style:
                           TextStyle(color: beige, fontWeight: FontWeight.bold),
                     ),

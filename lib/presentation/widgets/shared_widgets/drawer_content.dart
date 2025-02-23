@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/business_logic/language_cubit/language_cubit.dart';
 import 'package:notes/presentation/screens/to_do_screen.dart';
 import 'package:notes/styles/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -86,6 +88,28 @@ class DrawerContent extends StatelessWidget {
           },
           label: const Text(
             "Privacy Policy",
+            style: TextStyle(fontSize: 16, color: beige),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: darkBlue,
+            fixedSize: const Size(208, 43),
+            overlayColor: Colors.white,
+          ),
+        ),
+        ElevatedButton.icon(
+          icon: const Icon(
+            Icons.language,
+            color: beige,
+          ),
+          onHover: (value) {},
+          onPressed: () {
+            final currentLanguage =
+                context.read<LanguageCubit>().state.languageCode;
+            final newLanguage = currentLanguage == 'en' ? 'ar' : 'en';
+            context.read<LanguageCubit>().changeLanguage(newLanguage);
+          },
+          label: const Text(
+            "Language",
             style: TextStyle(fontSize: 16, color: beige),
           ),
           style: ElevatedButton.styleFrom(
