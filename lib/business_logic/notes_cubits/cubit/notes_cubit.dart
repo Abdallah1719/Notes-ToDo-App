@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -18,7 +18,6 @@ class NotesCubit extends Cubit<NotesState> {
 
   List<NotesModel>? notes;
   fetchAllNotes() {
-    log('/*/*/*/*/*/*/*');
     var notesbox = Hive.box<NotesModel>(knotesBox);
     notes = notesbox.values.toList()
       ..sort(
@@ -35,7 +34,6 @@ class NotesCubit extends Cubit<NotesState> {
           search.subtitle.startsWith(searchednotes.toLowerCase());
     }).toList();
     emit(NoteOnChangeSearch());
-    log('${searchedForNote.length}');
   }
 
   bool isBottomSheetShown = false;

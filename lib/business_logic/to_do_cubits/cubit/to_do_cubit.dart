@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -18,16 +16,14 @@ class ToDoCubit extends Cubit<ToDoState> {
     var todobox = Hive.box<ToDoModel>(ktodoBox);
 
     await todobox.add(todo);
-    log('/*/*/*/*/*/*/*');
     emit(AddToDoSucsess());
   }
 
   List<ToDoModel>? todo;
   fetchAllToDo() {
-    log('/*/*/*/*/*/*/*');
     var todobox = Hive.box<ToDoModel>(ktodoBox);
     todo = todobox.values.toList()
-    ..sort(
+      ..sort(
           (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
     emit(ToDoSucsess());
   }
