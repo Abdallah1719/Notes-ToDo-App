@@ -22,6 +22,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "title": MessageLookupByLibrary.simpleMessage("Notes")
+        "add_first_task":
+            MessageLookupByLibrary.simpleMessage("Add First Task"),
+        "add_notes_first":
+            MessageLookupByLibrary.simpleMessage("Add Notes First"),
+        "archived_label": MessageLookupByLibrary.simpleMessage("Archived"),
+        "content_hint": MessageLookupByLibrary.simpleMessage("Content"),
+        "done_label": MessageLookupByLibrary.simpleMessage("Done"),
+        "edit_note_title": MessageLookupByLibrary.simpleMessage("Edit Note"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "notes_title": MessageLookupByLibrary.simpleMessage("Notes"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "search_hint_text":
+            MessageLookupByLibrary.simpleMessage("search notes"),
+        "task_date_label": MessageLookupByLibrary.simpleMessage("Task Date"),
+        "task_time_label": MessageLookupByLibrary.simpleMessage("Task Time"),
+        "task_title_label": MessageLookupByLibrary.simpleMessage("Task Title"),
+        "tasks_label": MessageLookupByLibrary.simpleMessage("Tasks"),
+        "title_hint": MessageLookupByLibrary.simpleMessage("Title"),
+        "to_do_title": MessageLookupByLibrary.simpleMessage("To Do")
       };
 }

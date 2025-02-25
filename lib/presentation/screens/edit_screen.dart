@@ -92,6 +92,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
+import 'package:notes/generated/l10n.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/styles/colors.dart';
 
@@ -113,6 +114,14 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   @override
+  void initState() {
+    // titleFocusNode = FocusNode();
+    contentFocusNode = FocusNode();
+    super.initState();
+  }
+
+  late FocusNode contentFocusNode;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -124,9 +133,9 @@ class _EditScreenState extends State<EditScreen> {
         ),
         backgroundColor: darkBlue,
         title: Text(
-          'Edit Note',
+          S.of(context).edit_note_title,
           style: const TextStyle(
-              color: beige, fontSize: 32, fontWeight: FontWeight.w700),
+              color: beige, fontSize: 22, fontWeight: FontWeight.w700),
           textDirection: getTextDirection(
               widget.note.title), // تحديد الاتجاه بناءً على العنوان
         ),
@@ -158,6 +167,7 @@ class _EditScreenState extends State<EditScreen> {
               child: Column(
                 children: [
                   TextField(
+                    // focusNode: titleFocusNode,
                     controller: TextEditingController(text: widget.note.title),
                     maxLines: 1,
                     onChanged: (value) {
@@ -166,14 +176,15 @@ class _EditScreenState extends State<EditScreen> {
                     textDirection: getTextDirection(
                         widget.note.title), // تحديد الاتجاه بناءً على العنوان
                     decoration: InputDecoration(
-                      // hintText: 'Title',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                        hintText: S.of(context).title_hint,
+                        border: InputBorder.none),
+
+                    onSubmitted: (String? title) {
+                      contentFocusNode.requestFocus();
+                    },
                   ),
-                  const SizedBox(height: 20),
                   TextField(
+                    focusNode: contentFocusNode,
                     controller:
                         TextEditingController(text: widget.note.subtitle),
                     maxLines: 5,
@@ -183,11 +194,8 @@ class _EditScreenState extends State<EditScreen> {
                     textDirection: getTextDirection(widget
                         .note.subtitle), // تحديد الاتجاه بناءً على المحتوى
                     decoration: InputDecoration(
-                      // hintText: 'Content',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                        hintText: S.of(context).content_hint,
+                        border: InputBorder.none),
                   ),
                 ],
               ),

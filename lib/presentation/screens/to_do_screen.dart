@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/business_logic/to_do_cubits/cubit/to_do_cubit.dart';
+import 'package:notes/generated/l10n.dart';
 import 'package:notes/models/to_do_model/to_do_model.dart';
 import 'package:notes/presentation/shared/components.dart';
 import 'package:notes/presentation/widgets/shared_widgets/custom_appbar.dart';
@@ -38,9 +39,36 @@ class _TodoScreenState extends State<TodoScreen> {
           drawer: const Drawer(
             child: DrawerContent(),
           ),
-          appBar: const CustomAppbar(
-            title: 'To Do',
+          appBar: AppBar(
+            backgroundColor: darkBlue,
+            title: Text(
+              S.of(context).to_do_title,
+              style: const TextStyle(color: beige, fontWeight: FontWeight.bold),
+            ),
+            leading: Builder(
+              builder: (BuildContext context) {
+                return IconButton(
+                  icon: const Icon(
+                    Icons.menu,
+                  ),
+                  color: beige,
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                );
+              },
+            ),
+            // actions: [
+            //   IconButton(
+            //     onPressed: () {},
+            //     icon: const Icon(Icons.search),
+            //     color: beige,
+            //   ),
+            // ],
           ),
+          //  const CustomAppbar(
+          //   title: 'To Do',
+          // ),
           body: todoCubit.screens[todoCubit.currentidex],
           bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
@@ -48,12 +76,15 @@ class _TodoScreenState extends State<TodoScreen> {
               onTap: (index) {
                 todoCubit.changeIndx(index);
               },
-              items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Tasks'),
+              items: [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.check_circle), label: 'Done'),
+                    icon: Icon(Icons.menu), label: S.of(context).tasks_label),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.archive_outlined), label: 'Archived'),
+                    icon: Icon(Icons.check_circle),
+                    label: S.of(context).done_label),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.archive_outlined),
+                    label: S.of(context).archived_label),
               ]),
           floatingActionButton: FloatingActionButton(
             shape:
@@ -99,7 +130,7 @@ class _TodoScreenState extends State<TodoScreen> {
                                   onSaved: (value) {
                                     title = value;
                                   },
-                                  label: 'Task Title',
+                                  label: S.of(context).task_title_label,
                                   maxline: 1,
                                   controller: titlecontroller,
                                   keyboardType: TextInputType.text,
@@ -123,7 +154,7 @@ class _TodoScreenState extends State<TodoScreen> {
                                     onSaved: (value) {
                                       time = value;
                                     },
-                                    label: 'Task Time',
+                                    label: S.of(context).task_time_label,
                                     controller: timecontroller,
                                     keyboardType: TextInputType.datetime,
                                     prefix: Icons.watch_later_outlined,
@@ -157,7 +188,7 @@ class _TodoScreenState extends State<TodoScreen> {
                                     onSaved: (value) {
                                       date = value;
                                     },
-                                    label: 'Task Date',
+                                    label: S.of(context).task_date_label,
                                     controller: datecontroller,
                                     keyboardType: TextInputType.datetime,
                                     prefix: Icons.calendar_today,

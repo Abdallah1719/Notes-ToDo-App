@@ -67,7 +67,7 @@ class _NotesScreenState extends State<NotesScreen> {
               title: isSearching
                   ? null
                   : Text(
-                      S.of(context).title,
+                      S.of(context).notes_title,
                       style:
                           TextStyle(color: beige, fontWeight: FontWeight.bold),
                     ),
@@ -124,7 +124,6 @@ class _NotesScreenState extends State<NotesScreen> {
                     var formatcurrentDate = currentDate.toIso8601String();
                     // DateFormat('dd/MM/yy').format(currentDate);
                     var notemodel = NotesModel(
-                  
                       title: title ?? '',
                       subtitle: content ?? '',
                       date: formatcurrentDate,
@@ -167,7 +166,7 @@ class _NotesScreenState extends State<NotesScreen> {
                                     onSaved: (value) {
                                       title = value;
                                     },
-                                    hint: 'Title',
+                                    hint: S.of(context).title_hint,
                                     maxline: 1,
                                   ),
                                   DefaultTextFormFiled(
@@ -175,7 +174,7 @@ class _NotesScreenState extends State<NotesScreen> {
                                     onSaved: (value) {
                                       content = value;
                                     },
-                                    hint: 'Content',
+                                    hint: S.of(context).content_hint,
                                     maxline: 8,
                                   ),
                                 ],

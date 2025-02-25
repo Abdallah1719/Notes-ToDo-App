@@ -45,7 +45,7 @@ class DrawerContent extends StatelessWidget {
             }
           },
           label: Text(
-            S.of(context).title,
+            S.of(context).notes_title,
             style: TextStyle(fontSize: 16, color: beige),
           ),
           style: ElevatedButton.styleFrom(
@@ -67,8 +67,8 @@ class DrawerContent extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const TodoScreen()),
             );
           },
-          label: const Text(
-            "TO Do",
+          label: Text(
+            S.of(context).to_do_title,
             style: TextStyle(fontSize: 16, color: beige),
           ),
           style: ElevatedButton.styleFrom(
@@ -91,8 +91,8 @@ class DrawerContent extends StatelessWidget {
             final newLanguage = currentLanguage == 'en' ? 'ar' : 'en';
             context.read<LanguageCubit>().changeLanguage(newLanguage);
           },
-          label: const Text(
-            "Language",
+          label: Text(
+            S.of(context).language,
             style: TextStyle(fontSize: 16, color: beige),
           ),
           style: ElevatedButton.styleFrom(
@@ -112,8 +112,8 @@ class DrawerContent extends StatelessWidget {
           onPressed: () {
             _launchUrl();
           },
-          label: const Text(
-            "Privacy Policy",
+          label: Text(
+            S.of(context).privacy_policy,
             style: TextStyle(fontSize: 16, color: beige),
           ),
           style: ElevatedButton.styleFrom(

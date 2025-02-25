@@ -22,6 +22,27 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "title": MessageLookupByLibrary.simpleMessage("ملاحظات")
+        "add_first_task":
+            MessageLookupByLibrary.simpleMessage("أضف مهمة أولاً"),
+        "add_notes_first":
+            MessageLookupByLibrary.simpleMessage("أضف ملاحظات أولاً"),
+        "archived_label": MessageLookupByLibrary.simpleMessage("مؤرشف"),
+        "content_hint": MessageLookupByLibrary.simpleMessage("المحتوى"),
+        "done_label": MessageLookupByLibrary.simpleMessage("تم"),
+        "edit_note_title":
+            MessageLookupByLibrary.simpleMessage("تعديل الملاحظة"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "notes_title": MessageLookupByLibrary.simpleMessage("ملاحظات"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+        "search_hint_text":
+            MessageLookupByLibrary.simpleMessage("ابحث في الملاحظات"),
+        "task_date_label": MessageLookupByLibrary.simpleMessage("تاريخ المهمة"),
+        "task_time_label": MessageLookupByLibrary.simpleMessage("وقت المهمة"),
+        "task_title_label":
+            MessageLookupByLibrary.simpleMessage("عنوان المهمة"),
+        "tasks_label": MessageLookupByLibrary.simpleMessage("المهام"),
+        "title_hint": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "to_do_title": MessageLookupByLibrary.simpleMessage("المهام")
       };
 }

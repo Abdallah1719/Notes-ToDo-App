@@ -1,3 +1,18 @@
 {
-    "title" : "Notes"
+    "notes_title" : "Notes",
+    "to_do_title" : "To Do",
+    "language" : "Language",
+    "privacy_policy" : "Privacy Policy",
+    "tasks_label" : "Tasks",
+    "done_label" : "Done",
+    "archived_label" : "Archived",
+    "task_title_label" : "Task Title",
+    "task_time_label" : "Task Time",
+    "task_date_label" : "Task Date",
+    "title_hint" : "Title",
+    "content_hint" : "Content",
+    "search_hint_text" : "search notes",
+    "edit_note_title" : "Edit Note",
+    "add_notes_first" : "Add Notes First",
+    "add_first_task" : "Add First Task"
 }

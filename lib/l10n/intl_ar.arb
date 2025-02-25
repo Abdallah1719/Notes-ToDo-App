@@ -1,3 +1,19 @@
 {
-    "title" : "ملاحظات"
+    "notes_title" : "ملاحظات",
+    "to_do_title": "المهام",
+    "language": "اللغة",
+    "privacy_policy": "سياسة الخصوصية",
+    "tasks_label": "المهام",
+    "done_label": "تم",
+    "archived_label": "مؤرشف",
+    "task_title_label": "عنوان المهمة",
+    "task_time_label": "وقت المهمة",
+    "task_date_label": "تاريخ المهمة",
+    "title_hint": "العنوان",
+    "content_hint": "المحتوى",
+    "search_hint_text": "ابحث في الملاحظات",
+    "edit_note_title": "تعديل الملاحظة",
+    "add_notes_first": "أضف ملاحظات أولاً",
+    "add_first_task": "أضف مهمة أولاً"
+      
 }

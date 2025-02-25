@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
+import 'package:notes/generated/l10n.dart';
 import 'package:notes/styles/colors.dart';
 
 class Search extends StatefulWidget {
@@ -34,8 +35,8 @@ class _SearchState extends State<Search> {
         return TextField(
           controller: bloc.searchTextController,
           cursorColor: beige,
-          decoration: const InputDecoration(
-            hintText: 'search notes',
+          decoration: InputDecoration(
+            hintText: S.of(context).search_hint_text,
             hintStyle: TextStyle(color: beige, fontSize: 18),
             border: InputBorder.none,
           ),

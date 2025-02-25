@@ -51,10 +51,160 @@ class S {
   }
 
   /// `Notes`
-  String get title {
+  String get notes_title {
     return Intl.message(
       'Notes',
-      name: 'title',
+      name: 'notes_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To Do`
+  String get to_do_title {
+    return Intl.message(
+      'To Do',
+      name: 'to_do_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacy_policy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacy_policy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks`
+  String get tasks_label {
+    return Intl.message(
+      'Tasks',
+      name: 'tasks_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get done_label {
+    return Intl.message(
+      'Done',
+      name: 'done_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Archived`
+  String get archived_label {
+    return Intl.message(
+      'Archived',
+      name: 'archived_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Title`
+  String get task_title_label {
+    return Intl.message(
+      'Task Title',
+      name: 'task_title_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Time`
+  String get task_time_label {
+    return Intl.message(
+      'Task Time',
+      name: 'task_time_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Date`
+  String get task_date_label {
+    return Intl.message(
+      'Task Date',
+      name: 'task_date_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title_hint {
+    return Intl.message(
+      'Title',
+      name: 'title_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Content`
+  String get content_hint {
+    return Intl.message(
+      'Content',
+      name: 'content_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `search notes`
+  String get search_hint_text {
+    return Intl.message(
+      'search notes',
+      name: 'search_hint_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Note`
+  String get edit_note_title {
+    return Intl.message(
+      'Edit Note',
+      name: 'edit_note_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Notes First`
+  String get add_notes_first {
+    return Intl.message(
+      'Add Notes First',
+      name: 'add_notes_first',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add First Task`
+  String get add_first_task {
+    return Intl.message(
+      'Add First Task',
+      name: 'add_first_task',
       desc: '',
       args: [],
     );
