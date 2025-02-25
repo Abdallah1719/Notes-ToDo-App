@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
@@ -28,7 +27,7 @@ class _NotesBodyState extends State<NotesBody> {
             : BlocProvider.of<NotesCubit>(context).notes ?? [];
         return ListView.builder(
           itemCount: notes.length,
-          padding: const EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.all(10),
           itemBuilder: (context, index) {
             return NoteItem(
               note: notes[index],

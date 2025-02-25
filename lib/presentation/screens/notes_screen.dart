@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
@@ -126,12 +124,13 @@ class _NotesScreenState extends State<NotesScreen> {
                     var formatcurrentDate = currentDate.toIso8601String();
                     // DateFormat('dd/MM/yy').format(currentDate);
                     var notemodel = NotesModel(
+                  
                       title: title ?? '',
                       subtitle: content ?? '',
                       date: formatcurrentDate,
                     );
                     BlocProvider.of<NotesCubit>(context).addNote(notemodel);
-                    log('CLICK');
+
                     bloc.changeBottomSheetState(
                         isShow: false, icon: Icons.edit);
                   }
@@ -187,11 +186,10 @@ class _NotesScreenState extends State<NotesScreen> {
                       })
                       .closed
                       .then((value) {
-                        log('THEN');
                         bloc.changeBottomSheetState(
                             isShow: false, icon: Icons.edit);
                       });
-                  log('ELSE');
+
                   bloc.changeBottomSheetState(isShow: true, icon: Icons.add);
                 }
               },

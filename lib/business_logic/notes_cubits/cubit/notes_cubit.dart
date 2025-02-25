@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -17,11 +16,22 @@ class NotesCubit extends Cubit<NotesState> {
   }
 
   List<NotesModel>? notes;
+  // fetchAllNotes() {
+  //   var notesbox = Hive.box<NotesModel>(knotesBox);
+  //   notes = notesbox.values.toList()
+  //     ..sort(
+  //         (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
+  //   emit(NoteSucsess());
+  // }
   fetchAllNotes() {
     var notesbox = Hive.box<NotesModel>(knotesBox);
     notes = notesbox.values.toList()
-      ..sort(
-          (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
+      ..sort((a, b) {
+        if (a.isPinned && !b.isPinned) return -1; // المثبتة أولاً
+        if (!a.isPinned && b.isPinned) return 1;
+        return DateTime.parse(b.date)
+            .compareTo(DateTime.parse(a.date)); // الفرز حسب التاريخ
+      });
     emit(NoteSucsess());
   }
 
@@ -43,6 +53,14 @@ class NotesCubit extends Cubit<NotesState> {
     isBottomSheetShown = isShow;
     fabIcon = icon;
     emit(ChangeBottomSheetState());
+  }
+
+  void togglePinStatus(NotesModel note) async {
+    var notesBox = Hive.box<NotesModel>(knotesBox);
+    note.isPinned = !note.isPinned; // تبديل حالة التثبيت
+    await note.save(); // حفظ التغييرات في Hive
+    fetchAllNotes(); // إعادة تحميل الملاحظات
+    emit(NoteSucsess());
   }
 
   // @override

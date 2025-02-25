@@ -11,12 +11,12 @@ import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/models/to_do_model/to_do_model.dart';
 import 'package:notes/presentation/screens/notes_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'presentation/shared/bloc_observer.dart';
+// import 'presentation/shared/bloc_observer.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  Bloc.observer = MyBlocObserver();
+  // Bloc.observer = MyBlocObserver();
   await Hive.initFlutter();
   Hive.registerAdapter(ToDoModelAdapter());
   Hive.registerAdapter(NotesModelAdapter());
@@ -24,6 +24,10 @@ void main() async {
   await Hive.openBox<ToDoModel>(ktodoBox);
   runApp(const Notes());
   FlutterNativeSplash.remove();
+  // void updateOldNotes() async {
+  //   var notesBox = Hive.box<NotesModel>(knotesBox);
+  //   for (var note in notesBox.values) {}
+  // }
 }
 
 class Notes extends StatelessWidget {
@@ -39,7 +43,7 @@ class Notes extends StatelessWidget {
         BlocProvider(create: (context) => NotesCubit()),
         BlocProvider(create: (context) => ToDoCubit()),
       ],
-      child:BlocBuilder<LanguageCubit, LanguageState>(
+      child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) {
           return MaterialApp(
             locale: Locale(state.languageCode),

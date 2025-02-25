@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/language_cubit/language_cubit.dart';
+import 'package:notes/generated/l10n.dart';
 import 'package:notes/presentation/screens/to_do_screen.dart';
 import 'package:notes/styles/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -43,8 +44,8 @@ class DrawerContent extends StatelessWidget {
               Navigator.pop(context);
             }
           },
-          label: const Text(
-            "Notes",
+          label: Text(
+            S.of(context).title,
             style: TextStyle(fontSize: 16, color: beige),
           ),
           style: ElevatedButton.styleFrom(
@@ -77,25 +78,7 @@ class DrawerContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        ElevatedButton.icon(
-          icon: const Icon(
-            Icons.link,
-            color: beige,
-          ),
-          onHover: (value) {},
-          onPressed: () {
-            _launchUrl();
-          },
-          label: const Text(
-            "Privacy Policy",
-            style: TextStyle(fontSize: 16, color: beige),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: darkBlue,
-            fixedSize: const Size(208, 43),
-            overlayColor: Colors.white,
-          ),
-        ),
+
         ElevatedButton.icon(
           icon: const Icon(
             Icons.language,
@@ -117,7 +100,28 @@ class DrawerContent extends StatelessWidget {
             fixedSize: const Size(208, 43),
             overlayColor: Colors.white,
           ),
-        )
+        ),
+
+        const SizedBox(height: 16),
+        ElevatedButton.icon(
+          icon: const Icon(
+            Icons.link,
+            color: beige,
+          ),
+          onHover: (value) {},
+          onPressed: () {
+            _launchUrl();
+          },
+          label: const Text(
+            "Privacy Policy",
+            style: TextStyle(fontSize: 16, color: beige),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: darkBlue,
+            fixedSize: const Size(208, 43),
+            overlayColor: Colors.white,
+          ),
+        ),
       ],
     );
   }

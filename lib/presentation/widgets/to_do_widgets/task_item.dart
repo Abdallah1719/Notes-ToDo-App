@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,7 +61,7 @@ class TaskItem extends StatelessWidget {
                   task.status = 'done';
                   task.save();
                   BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
-                  log(task.status);
+                 
                 },
                 icon: const Icon(Icons.check_box),
                 color: beige,
@@ -71,7 +71,7 @@ class TaskItem extends StatelessWidget {
                   task.status = 'archive';
                   task.save();
                   BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
-                  log(task.status);
+                 
                 },
                 icon: const Icon(Icons.archive),
                 color: beige,
