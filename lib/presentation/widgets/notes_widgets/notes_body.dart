@@ -25,15 +25,19 @@ class _NotesBodyState extends State<NotesBody> {
         List<NotesModel> notes = widget.isSearcing
             ? BlocProvider.of<NotesCubit>(context, listen: true).searchedForNote
             : BlocProvider.of<NotesCubit>(context).notes ?? [];
-        return ListView.builder(
-          itemCount: notes.length,
-          padding: const EdgeInsets.all(10),
-          itemBuilder: (context, index) {
-            return NoteItem(
-              note: notes[index],
-            );
-          },
-        );
+        return notes.isNotEmpty
+            ? ListView.builder(
+                itemCount: notes.length,
+                padding: const EdgeInsets.all(10),
+                itemBuilder: (context, index) {
+                  return NoteItem(
+                    note: notes[index],
+                  );
+                },
+              )
+            : Center(
+                child: Text('Add Notes first'),
+              );
       },
     );
   }
