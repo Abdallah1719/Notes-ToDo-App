@@ -4,6 +4,7 @@ import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/generated/l10n.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/shared/components.dart';
+import 'package:notes/presentation/widgets/notes_widgets/note_color_listview.dart';
 import 'package:notes/presentation/widgets/notes_widgets/note_search.dart';
 import 'package:notes/presentation/widgets/notes_widgets/notes_body.dart';
 import 'package:notes/presentation/widgets/shared_widgets/drawer_content.dart';
@@ -127,6 +128,7 @@ class _NotesScreenState extends State<NotesScreen> {
                       title: title ?? '',
                       subtitle: content ?? '',
                       date: formatcurrentDate,
+                      color: bloc.color.value,
                     );
                     BlocProvider.of<NotesCubit>(context).addNote(notemodel);
 
@@ -175,8 +177,22 @@ class _NotesScreenState extends State<NotesScreen> {
                                       content = value;
                                     },
                                     hint: S.of(context).content_hint,
-                                    maxline: 8,
+                                    maxline: 5,
                                   ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  ColorsListView(
+                                    onColorSelected: (color) {
+                                      bloc.color =
+                                          color; // تحديث اللون في الـ Cubit
+                                    },
+                                    initialColor: Color(
+                                        bloc.color.value), // اللون المبدئي
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  )
                                 ],
                               ),
                             ),

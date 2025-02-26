@@ -21,13 +21,14 @@ class NotesModelAdapter extends TypeAdapter<NotesModel> {
       subtitle: fields[1] as String,
       date: fields[2] as String,
       isPinned: fields[3] as bool,
+      color: fields[4] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, NotesModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class NotesModelAdapter extends TypeAdapter<NotesModel> {
       ..writeByte(2)
       ..write(obj.date)
       ..writeByte(3)
-      ..write(obj.isPinned);
+      ..write(obj.isPinned)
+      ..writeByte(4)
+      ..write(obj.color);
   }
 
   @override

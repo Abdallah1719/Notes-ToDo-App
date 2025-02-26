@@ -135,7 +135,7 @@ class _NoteItemState extends State<NoteItem> {
                 child: Container(
                   padding: const EdgeInsets.only(top: 18, bottom: 18),
                   decoration: BoxDecoration(
-                    color: darkBlue,
+                    color: Color(widget.note.color ?? 0xff55DDE0),
                     borderRadius: BorderRadius.circular(21),
                   ),
                   child: Directionality(

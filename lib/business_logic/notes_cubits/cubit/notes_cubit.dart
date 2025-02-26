@@ -9,7 +9,9 @@ part 'notes_state.dart';
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
   final GlobalKey<FormState> formkey = GlobalKey();
+  Color color = Color(0xff55DDE0);
   addNote(NotesModel note) async {
+    note.color = color.value;
     var notesbox = Hive.box<NotesModel>(knotesBox);
     await notesbox.add(note);
     emit(AddNoteSucsess());

@@ -10,12 +10,12 @@
 //   String subtitle;
 //   @HiveField(2)
 //   final String date;
-  
+
 //   NotesModel({
 //     required this.title,
 //     required this.subtitle,
 //     required this.date,
-  
+
 //   });
 // }
 
@@ -33,11 +33,14 @@ class NotesModel extends HiveObject {
   final String date;
   @HiveField(3)
   bool isPinned; // حقل جديد للتثبيت
-
+  @HiveField(4)
+  int? color;
   NotesModel({
     required this.title,
     required this.subtitle,
     required this.date,
-    this.isPinned = false, // قيمة افتراضية
+    this.isPinned = false,
+    this.color,
+    // قيمة افتراضية
   });
 }
