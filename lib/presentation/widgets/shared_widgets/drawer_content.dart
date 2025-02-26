@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/business_logic/cubit/theme_cubit.dart';
 import 'package:notes/business_logic/language_cubit/language_cubit.dart';
 import 'package:notes/generated/l10n.dart';
 import 'package:notes/presentation/screens/to_do_screen.dart';
@@ -86,9 +87,17 @@ class DrawerContent extends StatelessWidget {
           ),
           onHover: (value) {},
           onPressed: () {
-            final currentLanguage =
-                context.read<LanguageCubit>().state.languageCode;
-            final newLanguage = currentLanguage == 'en' ? 'ar' : 'en';
+            // final currentLanguage =
+            //     context.read<LanguageCubit>().state.languageCode;
+            // final newLanguage = currentLanguage == 'en' ? 'ar' : 'en';
+            // context.read<LanguageCubit>().changeLanguage(newLanguage);
+            final currentLocale = context.read<LanguageCubit>().state.locale;
+
+            // تحديد اللغة الجديدة
+            final newLanguage =
+                currentLocale.languageCode == 'en' ? 'ar' : 'en';
+
+            // تغيير اللغة
             context.read<LanguageCubit>().changeLanguage(newLanguage);
           },
           label: Text(
@@ -122,6 +131,55 @@ class DrawerContent extends StatelessWidget {
             overlayColor: Colors.white,
           ),
         ),
+        const SizedBox(height: 16),
+        // ElevatedButton.icon(
+        //   icon: const Icon(
+        //     Icons.brightness_6,
+        //     color: beige,
+        //   ),
+        //   onHover: (value) {},
+        //   onPressed: () {
+        //     context.read<ThemeCubit>().toggleTheme();
+        //   },
+        //   label: Text(
+        //     'theme',
+        //     style: TextStyle(fontSize: 16, color: beige),
+        //   ),
+        //   style: ElevatedButton.styleFrom(
+        //     backgroundColor: darkBlue,
+        //     fixedSize: const Size(208, 43),
+        //     overlayColor: Colors.white,
+        //   ),
+        // ),
+        BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, themeState) {
+            final isDarkTheme = themeState.themeMode == ThemeMode.dark;
+
+            return ElevatedButton.icon(
+              icon: Icon(
+                isDarkTheme
+                    ? Icons.light_mode
+                    : Icons.dark_mode, // تغيير الأيقونة بناءً على الثيم
+                color: beige,
+              ),
+              onHover: (value) {},
+              onPressed: () {
+                context.read<ThemeCubit>().toggleTheme(); // تغيير الثيم
+              },
+              label: Text(
+                isDarkTheme
+                    ? 'Light Theme'
+                    : 'Dark Theme', // تغيير النص بناءً على الثيم
+                style: TextStyle(fontSize: 16, color: beige),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: darkBlue,
+                fixedSize: const Size(208, 43),
+                overlayColor: Colors.white,
+              ),
+            );
+          },
+        )
       ],
     );
   }
