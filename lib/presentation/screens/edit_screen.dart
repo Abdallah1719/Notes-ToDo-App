@@ -248,16 +248,16 @@ class _EditScreenState extends State<EditScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: beige),
+          icon:
+              Icon(Icons.arrow_back, color: Theme.of(context).iconTheme.color),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: darkBlue,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: Text(
           S.of(context).edit_note_title,
-          style: const TextStyle(
-              color: beige, fontSize: 22, fontWeight: FontWeight.w700),
+          style: Theme.of(context).textTheme.titleLarge,
           textDirection: getTextDirection(
               widget.note.title), // تحديد الاتجاه بناءً على العنوان
         ),
@@ -274,7 +274,7 @@ class _EditScreenState extends State<EditScreen> {
               Navigator.pop(context);
             },
             icon: const Icon(Icons.check),
-            color: beige,
+            color: Theme.of(context).iconTheme.color,
           ),
         ],
       ),
@@ -288,6 +288,7 @@ class _EditScreenState extends State<EditScreen> {
               child: Column(
                 children: [
                   TextField(
+                    cursorColor: Theme.of(context).hintColor,
                     controller: TextEditingController(text: widget.note.title),
                     maxLines: 1,
                     onChanged: (value) {
@@ -296,12 +297,15 @@ class _EditScreenState extends State<EditScreen> {
                     textDirection: getTextDirection(widget.note.title),
                     decoration: InputDecoration(
                         hintText: S.of(context).title_hint,
+                        hintStyle:
+                            TextStyle(color: Theme.of(context).hintColor),
                         border: InputBorder.none),
                     onSubmitted: (String? title) {
                       contentFocusNode.requestFocus();
                     },
                   ),
                   TextField(
+                    cursorColor: Theme.of(context).hintColor,
                     focusNode: contentFocusNode,
                     controller:
                         TextEditingController(text: widget.note.subtitle),
@@ -312,6 +316,8 @@ class _EditScreenState extends State<EditScreen> {
                     textDirection: getTextDirection(widget.note.subtitle),
                     decoration: InputDecoration(
                         hintText: S.of(context).content_hint,
+                        hintStyle:
+                            TextStyle(color: Theme.of(context).hintColor),
                         border: InputBorder.none),
                   ),
                   const SizedBox(height: 20),

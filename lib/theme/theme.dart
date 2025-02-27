@@ -3,29 +3,59 @@ import 'package:flutter/material.dart';
 class AppThemes {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
-    appBarTheme: const AppBarTheme(
-      color: Colors.blue,
-      iconTheme: IconThemeData(color: Colors.white),
+    primaryColor: Color(0xff55DDE0),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: Color(0xff55DDE0)),
+    appBarTheme: AppBarTheme(
+      backgroundColor: Color(0xff55DDE0),
+      iconTheme: IconThemeData(color: Colors.grey[900]),
     ),
+    primaryTextTheme: TextTheme(),
     textTheme: const TextTheme(
-      bodyMedium: TextStyle(color: Colors.black),
-      bodySmall: TextStyle(color: Colors.black),
+      labelSmall: TextStyle(fontSize: 16, color: Colors.black),
+      titleLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyLarge: TextStyle(
+          color: Colors.black, fontSize: 22, fontWeight: FontWeight.w400),
+      bodyMedium: TextStyle(
+          color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+      bodySmall: TextStyle(
+          color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
     ),
+    hintColor: Colors.white,
+    bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
   );
 
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: Colors.indigo,
-    scaffoldBackgroundColor: Colors.grey[900],
+    scaffoldBackgroundColor: Colors.black,
+    primaryColor: Color(0xff55DDE0),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: Color(0xff55DDE0)),
     appBarTheme: AppBarTheme(
-      color: Colors.indigo,
-      iconTheme: const IconThemeData(color: Colors.white),
+      backgroundColor: Colors.black,
+      iconTheme: IconThemeData(color: Colors.grey[200]),
     ),
+    primaryTextTheme: TextTheme(),
     textTheme: const TextTheme(
-      bodyMedium: TextStyle(color: Colors.white),
-      bodySmall: TextStyle(color: Colors.white),
+      labelSmall: TextStyle(fontSize: 16, color: Colors.white),
+      titleLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyLarge: TextStyle(
+          color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+      bodyMedium: TextStyle(
+          color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+      bodySmall: TextStyle(
+          color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
     ),
+    hintColor: Colors.black,
+    bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white),
   );
 }

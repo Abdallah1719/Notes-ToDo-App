@@ -38,14 +38,14 @@ class DefaultTextFormFiled extends StatelessWidget {
       onTap: onTap,
       onChanged: onChanged,
       onSaved: onSaved,
-      cursorColor: darkBlue,
+      cursorColor: Theme.of(context).hintColor,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: const TextStyle(color: darkBlue),
+        hintStyle: TextStyle(color: Theme.of(context).hintColor),
         border: const OutlineInputBorder(borderSide: BorderSide.none),
       ),
-      style: const TextStyle(
-        color: darkBlue,
+      style: TextStyle(
+        color: Theme.of(context).hintColor,
         fontSize: 18,
       ),
       onFieldSubmitted: onFieldSubmitted,
@@ -94,27 +94,29 @@ class ToDoTextFormFiled extends StatelessWidget {
       },
       onChanged: onChanged,
       onSaved: onSaved,
-      cursorColor: darkBlue,
+      cursorColor: Theme.of(context).primaryColor,
       maxLines: maxline,
       decoration: InputDecoration(
         prefixIcon: Icon(prefix),
+        prefixIconColor: Theme.of(context).primaryColor,
         hintText: hint,
         labelText: label,
+        labelStyle: TextStyle(color: Theme.of(context).primaryColor),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: darkBlue),
+          borderSide: BorderSide(color: Theme.of(context).primaryColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: darkBlue),
+          borderSide: BorderSide(color: Theme.of(context).primaryColor),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: darkBlue),
+          borderSide: BorderSide(color: Theme.of(context).primaryColor),
         ),
       ),
-      style: const TextStyle(
-        color: darkBlue,
+      style: TextStyle(
+        color: Theme.of(context).primaryColor,
         fontSize: 18,
       ),
     );

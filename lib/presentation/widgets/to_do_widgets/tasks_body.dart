@@ -42,7 +42,11 @@ class _TasksBodyState extends State<TasksBody> {
                       : const SizedBox.shrink();
                 },
               )
-            : Center(child: Text(S.of(context).add_first_task));
+            : Center(
+                child: Text(
+                S.of(context).add_first_task,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ));
       },
     );
   }

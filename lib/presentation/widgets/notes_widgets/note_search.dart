@@ -34,13 +34,16 @@ class _SearchState extends State<Search> {
       builder: (context, state) {
         return TextField(
           controller: bloc.searchTextController,
-          cursorColor: beige,
+          cursorColor: Colors.white,
           decoration: InputDecoration(
             hintText: S.of(context).search_hint_text,
-            hintStyle: TextStyle(color: beige, fontSize: 18),
+            hintStyle:
+                TextStyle(color: Theme.of(context).hintColor, fontSize: 18)
+                    .copyWith(color: Colors.white, fontSize: 18),
             border: InputBorder.none,
           ),
-          style: const TextStyle(color: beige, fontSize: 18),
+          style: TextStyle(color: Theme.of(context).hintColor, fontSize: 18)
+              .copyWith(color: Colors.white, fontSize: 18),
           onChanged: (searchednotes) {
             bloc.addSearchedForItemstoSearchedList(searchednotes);
           },
