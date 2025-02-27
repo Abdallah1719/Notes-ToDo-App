@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -22,7 +20,7 @@ class TaskItem extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: darkBlue,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(21),
         ),
         child: Padding(
@@ -30,11 +28,11 @@ class TaskItem extends StatelessWidget {
           child: Row(
             children: [
               CircleAvatar(
-                backgroundColor: beige,
+                backgroundColor: Colors.white,
                 radius: 36.0,
                 child: Text(task.time,
                     style: const TextStyle(
-                      color: darkBlue,
+                      color: Colors.black,
                       fontSize: 12.0,
                     )),
               ),
@@ -44,13 +42,10 @@ class TaskItem extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(task.title,
-                        style: const TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: beige)),
+                        style: Theme.of(context).textTheme.bodyMedium),
                     Text(
                       date,
-                      style: const TextStyle(color: lightBlue),
+                      style: Theme.of(context).textTheme.bodySmall,
                     )
                   ],
                 ),
@@ -61,20 +56,18 @@ class TaskItem extends StatelessWidget {
                   task.status = 'done';
                   task.save();
                   BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
-                 
                 },
                 icon: const Icon(Icons.check_box),
-                color: beige,
+                color: Theme.of(context).iconTheme.color,
               ),
               IconButton(
                 onPressed: () {
                   task.status = 'archive';
                   task.save();
                   BlocProvider.of<ToDoCubit>(context).fetchAllToDo();
-                 
                 },
                 icon: const Icon(Icons.archive),
-                color: beige,
+                color: Theme.of(context).iconTheme.color,
               ),
             ],
           ),

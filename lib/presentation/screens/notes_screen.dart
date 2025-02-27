@@ -64,13 +64,12 @@ class _NotesScreenState extends State<NotesScreen> {
               child: DrawerContent(),
             ),
             appBar: AppBar(
-              backgroundColor: darkBlue,
+              backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
               title: isSearching
                   ? null
                   : Text(
                       S.of(context).notes_title,
-                      style:
-                          TextStyle(color: beige, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
               leading: Builder(
                 builder: (BuildContext context) {
@@ -78,7 +77,7 @@ class _NotesScreenState extends State<NotesScreen> {
                     icon: const Icon(
                       Icons.menu,
                     ),
-                    color: beige,
+                    color: Theme.of(context).iconTheme.color,
                     onPressed: () {
                       Scaffold.of(context).openDrawer();
                     },
@@ -91,9 +90,9 @@ class _NotesScreenState extends State<NotesScreen> {
                         onPressed: () {
                           startSearching();
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.search,
-                          color: beige,
+                          color: Theme.of(context).iconTheme.color,
                         ),
                       )
                     : SizedBox(
@@ -104,9 +103,9 @@ class _NotesScreenState extends State<NotesScreen> {
                     onPressed: () {
                       stopSearching();
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.close,
-                      color: beige,
+                      color: Theme.of(context).iconTheme.color,
                     ),
                   )
               ],
@@ -137,8 +136,10 @@ class _NotesScreenState extends State<NotesScreen> {
                   }
                 } else {
                   scaffoldKye.currentState
-                      ?.showBottomSheet(backgroundColor: Colors.grey[300],
-                          (context) {
+                      ?.showBottomSheet(
+                          backgroundColor: Theme.of(context)
+                              .bottomSheetTheme
+                              .backgroundColor, (context) {
                         return SingleChildScrollView(
                           padding: const EdgeInsets.only(
                             right: 20,
@@ -208,10 +209,11 @@ class _NotesScreenState extends State<NotesScreen> {
                   bloc.changeBottomSheetState(isShow: true, icon: Icons.add);
                 }
               },
-              backgroundColor: darkBlue,
+              backgroundColor:
+                  Theme.of(context).floatingActionButtonTheme.backgroundColor,
               child: Icon(
                 bloc.fabIcon,
-                color: beige,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
           );

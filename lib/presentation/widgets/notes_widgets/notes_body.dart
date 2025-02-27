@@ -37,7 +37,10 @@ class _NotesBodyState extends State<NotesBody> {
                 },
               )
             : Center(
-                child: Text(S.of(context).add_notes_first),
+                child: Text(
+                  S.of(context).add_notes_first,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
               );
       },
     );

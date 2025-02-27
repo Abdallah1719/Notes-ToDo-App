@@ -89,7 +89,7 @@ class _NoteItemState extends State<NoteItem> {
                       children: [
                         Spacer(),
                         CircleAvatar(
-                          backgroundColor: darkBlue,
+                          backgroundColor: Theme.of(context).primaryColor,
                           radius: 24,
                           child: IconButton(
                             onPressed: () {
@@ -101,14 +101,14 @@ class _NoteItemState extends State<NoteItem> {
                               widget.note.isPinned
                                   ? Icons.push_pin
                                   : Icons.push_pin_outlined,
-                              color: beige,
+                              color: Theme.of(context).iconTheme.color,
                               size: 32,
                             ),
                           ),
                         ),
                         Spacer(),
                         CircleAvatar(
-                          backgroundColor: darkBlue,
+                          backgroundColor: Theme.of(context).primaryColor,
                           radius: 24,
                           child: IconButton(
                             onPressed: () {
@@ -123,7 +123,7 @@ class _NoteItemState extends State<NoteItem> {
                               Icons.delete,
                               size: 32,
                             ),
-                            color: beige,
+                            color: Theme.of(context).iconTheme.color,
                           ),
                         ),
                         Spacer(),
@@ -148,15 +148,10 @@ class _NoteItemState extends State<NoteItem> {
                           contentPadding: EdgeInsets.only(
                               left: isArabicText ? 5 : 20,
                               right: isArabicText ? 20 : 5),
-                          title: Text(
-                            widget.note.title,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: const TextStyle(
-                                color: beige,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w400),
-                          ),
+                          title: Text(widget.note.title,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: Theme.of(context).textTheme.bodyMedium),
                           // trailing: Row(
 
                           //   children: [
@@ -171,13 +166,8 @@ class _NoteItemState extends State<NoteItem> {
                           padding: EdgeInsets.only(
                               right: isArabicText ? 0 : 20,
                               left: isArabicText ? 20 : 0),
-                          child: Text(
-                            date,
-                            style: const TextStyle(
-                              color: beige,
-                              fontSize: 14,
-                            ),
-                          ),
+                          child: Text(date,
+                              style: Theme.of(context).textTheme.bodySmall),
                         ),
                       ],
                     ),

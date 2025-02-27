@@ -29,9 +29,9 @@ class DrawerContent extends StatelessWidget {
         //   onPressed: null,
         // ),
         ElevatedButton.icon(
-          icon: const Icon(
+          icon: Icon(
             Icons.add_circle,
-            color: beige,
+            color: Theme.of(context).iconTheme.color,
           ),
           onHover: (value) {},
           onPressed: () {
@@ -47,19 +47,19 @@ class DrawerContent extends StatelessWidget {
           },
           label: Text(
             S.of(context).notes_title,
-            style: TextStyle(fontSize: 16, color: beige),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: darkBlue,
+            backgroundColor: Theme.of(context).primaryColor,
             fixedSize: const Size(208, 43),
             overlayColor: Colors.white,
           ),
         ),
         const SizedBox(height: 16),
         ElevatedButton.icon(
-          icon: const Icon(
+          icon: Icon(
             Icons.add_circle,
-            color: beige,
+            color: Theme.of(context).iconTheme.color,
           ),
           onHover: (value) {},
           onPressed: () {
@@ -70,10 +70,10 @@ class DrawerContent extends StatelessWidget {
           },
           label: Text(
             S.of(context).to_do_title,
-            style: TextStyle(fontSize: 16, color: beige),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: darkBlue,
+            backgroundColor: Theme.of(context).primaryColor,
             fixedSize: const Size(208, 43),
             overlayColor: Colors.white,
           ),
@@ -81,9 +81,9 @@ class DrawerContent extends StatelessWidget {
         const SizedBox(height: 16),
 
         ElevatedButton.icon(
-          icon: const Icon(
+          icon: Icon(
             Icons.language,
-            color: beige,
+            color: Theme.of(context).iconTheme.color,
           ),
           onHover: (value) {},
           onPressed: () {
@@ -102,35 +102,15 @@ class DrawerContent extends StatelessWidget {
           },
           label: Text(
             S.of(context).language,
-            style: TextStyle(fontSize: 16, color: beige),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: darkBlue,
+            backgroundColor: Theme.of(context).primaryColor,
             fixedSize: const Size(208, 43),
             overlayColor: Colors.white,
           ),
         ),
 
-        const SizedBox(height: 16),
-        ElevatedButton.icon(
-          icon: const Icon(
-            Icons.link,
-            color: beige,
-          ),
-          onHover: (value) {},
-          onPressed: () {
-            _launchUrl();
-          },
-          label: Text(
-            S.of(context).privacy_policy,
-            style: TextStyle(fontSize: 16, color: beige),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: darkBlue,
-            fixedSize: const Size(208, 43),
-            overlayColor: Colors.white,
-          ),
-        ),
         const SizedBox(height: 16),
         // ElevatedButton.icon(
         //   icon: const Icon(
@@ -160,7 +140,7 @@ class DrawerContent extends StatelessWidget {
                 isDarkTheme
                     ? Icons.light_mode
                     : Icons.dark_mode, // تغيير الأيقونة بناءً على الثيم
-                color: beige,
+                color: Theme.of(context).iconTheme.color,
               ),
               onHover: (value) {},
               onPressed: () {
@@ -170,16 +150,36 @@ class DrawerContent extends StatelessWidget {
                 isDarkTheme
                     ? 'Light Theme'
                     : 'Dark Theme', // تغيير النص بناءً على الثيم
-                style: TextStyle(fontSize: 16, color: beige),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: darkBlue,
+                backgroundColor: Theme.of(context).primaryColor,
                 fixedSize: const Size(208, 43),
                 overlayColor: Colors.white,
               ),
             );
           },
-        )
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton.icon(
+          icon: Icon(
+            Icons.link,
+            color: Theme.of(context).iconTheme.color,
+          ),
+          onHover: (value) {},
+          onPressed: () {
+            _launchUrl();
+          },
+          label: Text(
+            S.of(context).privacy_policy,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Theme.of(context).primaryColor,
+            fixedSize: const Size(208, 43),
+            overlayColor: Colors.white,
+          ),
+        ),
       ],
     );
   }

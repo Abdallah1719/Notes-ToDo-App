@@ -53,7 +53,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:notes/presentation/widgets/notes_widgets/note_color_item.dart';
 
@@ -75,7 +74,6 @@ class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex = 0;
   List<Color> colors = [
     Color(0xffD30C7B),
-    Color(0xffFFE3DC),
     Color(0xffDBB4AD),
     Color(0xffA2AD91),
     Color(0xff3A2D32),

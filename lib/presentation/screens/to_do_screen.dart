@@ -39,10 +39,10 @@ class _TodoScreenState extends State<TodoScreen> {
             child: DrawerContent(),
           ),
           appBar: AppBar(
-            backgroundColor: darkBlue,
+            backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
             title: Text(
               S.of(context).to_do_title,
-              style: const TextStyle(color: beige, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             leading: Builder(
               builder: (BuildContext context) {
@@ -50,7 +50,7 @@ class _TodoScreenState extends State<TodoScreen> {
                   icon: const Icon(
                     Icons.menu,
                   ),
-                  color: beige,
+                  color: Theme.of(context).iconTheme.color,
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
@@ -70,20 +70,35 @@ class _TodoScreenState extends State<TodoScreen> {
           // ),
           body: todoCubit.screens[todoCubit.currentidex],
           bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Theme.of(context).primaryColor,
               type: BottomNavigationBarType.fixed,
               currentIndex: todoCubit.currentidex,
+              selectedItemColor: Colors.grey[600],
+              unselectedItemColor: Theme.of(context).iconTheme.color,
               onTap: (index) {
                 todoCubit.changeIndx(index);
               },
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.menu), label: S.of(context).tasks_label),
+                  icon: Icon(
+                    Icons.menu,
+                    color: Theme.of(context).iconTheme.color,
+                  ),
+                  label: S.of(context).tasks_label,
+                ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.check_circle),
+                    icon: Icon(
+                      Icons.check_circle,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     label: S.of(context).done_label),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.archive_outlined),
-                    label: S.of(context).archived_label),
+                  icon: Icon(
+                    Icons.archive_outlined,
+                    color: Theme.of(context).iconTheme.color,
+                  ),
+                  label: S.of(context).archived_label,
+                ),
               ]),
           floatingActionButton: FloatingActionButton(
             shape:
@@ -104,9 +119,13 @@ class _TodoScreenState extends State<TodoScreen> {
                 }
               } else {
                 scaffoldKye.currentState
-                    ?.showBottomSheet((context) {
+                    ?.showBottomSheet(
+                        backgroundColor: Theme.of(context)
+                            .bottomSheetTheme
+                            .backgroundColor, (context) {
                       return SingleChildScrollView(
                         padding: const EdgeInsets.only(
+                          top: 20,
                           right: 20,
                           left: 20,
                         ),
@@ -212,10 +231,10 @@ class _TodoScreenState extends State<TodoScreen> {
                 todoCubit.changeBottomSheetState(isShow: true, icon: Icons.add);
               }
             },
-            backgroundColor: darkBlue,
+            backgroundColor: Theme.of(context).primaryColor,
             child: Icon(
               todoCubit.fabIcon,
-              color: beige,
+              color: Theme.of(context).iconTheme.color,
             ),
           ),
         );
