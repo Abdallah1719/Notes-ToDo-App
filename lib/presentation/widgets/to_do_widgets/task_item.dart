@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/business_logic/to_do_cubits/cubit/to_do_cubit.dart';
 import 'package:notes/models/to_do_model/to_do_model.dart';
-import 'package:notes/styles/colors.dart';
 
 class TaskItem extends StatelessWidget {
   const TaskItem({super.key, required this.task});

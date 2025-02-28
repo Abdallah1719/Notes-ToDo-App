@@ -8,7 +8,6 @@ import 'package:notes/presentation/widgets/notes_widgets/note_color_listview.dar
 import 'package:notes/presentation/widgets/notes_widgets/note_search.dart';
 import 'package:notes/presentation/widgets/notes_widgets/notes_body.dart';
 import 'package:notes/presentation/widgets/shared_widgets/drawer_content.dart';
-import 'package:notes/styles/colors.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});
@@ -50,7 +49,7 @@ class _NotesScreenState extends State<NotesScreen> {
     isSearching = false;
     setState(() {});
   }
-
+//  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   bool isSearching = false;
   @override
   Widget build(BuildContext context) {

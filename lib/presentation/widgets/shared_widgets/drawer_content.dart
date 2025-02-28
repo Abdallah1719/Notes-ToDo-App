@@ -4,7 +4,6 @@ import 'package:notes/business_logic/cubit/theme_cubit.dart';
 import 'package:notes/business_logic/language_cubit/language_cubit.dart';
 import 'package:notes/generated/l10n.dart';
 import 'package:notes/presentation/screens/to_do_screen.dart';
-import 'package:notes/styles/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DrawerContent extends StatelessWidget {

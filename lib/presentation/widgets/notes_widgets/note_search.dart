@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/generated/l10n.dart';
-import 'package:notes/styles/colors.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});

@@ -213,7 +213,6 @@ import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/generated/l10n.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/widgets/notes_widgets/note_color_listview.dart';
-import 'package:notes/styles/colors.dart';
 
 class EditScreen extends StatefulWidget {
   const EditScreen({super.key, required this.note});

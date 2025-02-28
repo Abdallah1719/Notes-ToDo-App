@@ -4,7 +4,6 @@ import 'package:intl/intl.dart' as intl;
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/presentation/screens/edit_screen.dart';
-import 'package:notes/styles/colors.dart';
 
 class NoteItem extends StatefulWidget {
   const NoteItem({

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes/styles/colors.dart';
 
 class DefaultTextFormFiled extends StatelessWidget {
   const DefaultTextFormFiled({

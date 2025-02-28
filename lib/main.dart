@@ -75,6 +75,8 @@
 // // S.of(context).test
 // // dart run change_app_package_name:main com.notes.todo --ios
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -84,6 +86,7 @@ import 'package:notes/business_logic/language_cubit/language_cubit.dart';
 import 'package:notes/business_logic/notes_cubits/cubit/notes_cubit.dart';
 import 'package:notes/business_logic/to_do_cubits/cubit/to_do_cubit.dart';
 import 'package:notes/constant.dart';
+import 'package:notes/firebase_options.dart';
 import 'package:notes/generated/l10n.dart';
 import 'package:notes/models/notes_model/notes_model.dart';
 import 'package:notes/models/to_do_model/to_do_model.dart';
@@ -99,13 +102,19 @@ void main() async {
   Hive.registerAdapter(NotesModelAdapter());
   await Hive.openBox<NotesModel>(knotesBox);
   await Hive.openBox<ToDoModel>(ktodoBox);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const Notes());
   FlutterNativeSplash.remove();
 }
 
 class Notes extends StatelessWidget {
   const Notes({super.key});
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -117,9 +126,11 @@ class Notes extends StatelessWidget {
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, languageState) {
+          analytics.setAnalyticsCollectionEnabled(true);
           return BlocBuilder<ThemeCubit, ThemeState>(
             builder: (context, themeState) {
               return MaterialApp(
+                navigatorObservers: [observer],
                 locale: languageState.locale, // استخدام languageState.locale
                 localizationsDelegates: [
                   S.delegate,

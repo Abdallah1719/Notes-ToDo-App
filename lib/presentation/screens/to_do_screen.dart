@@ -6,7 +6,6 @@ import 'package:notes/generated/l10n.dart';
 import 'package:notes/models/to_do_model/to_do_model.dart';
 import 'package:notes/presentation/shared/components.dart';
 import 'package:notes/presentation/widgets/shared_widgets/drawer_content.dart';
-import 'package:notes/styles/colors.dart';
 
 class TodoScreen extends StatefulWidget {
   const TodoScreen({super.key});
