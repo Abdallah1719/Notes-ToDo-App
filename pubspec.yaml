@@ -2,7 +2,7 @@ name: notes
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.3+3
+version: 1.0.3+4
 
 environment:
   sdk: ^3.5.3
@@ -63,7 +63,7 @@ flutter_icons:
     android: true
     ios: true
     image_path: "assets/luncer.png"
-    adaptive_icon_background: "#c9a692"
+    adaptive_icon_background: "#55DDE0"
     adaptive_icon_foreground: "assets/luncer.png"
 
 flutter:

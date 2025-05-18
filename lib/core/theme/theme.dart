@@ -25,6 +25,8 @@ class AppThemes {
           color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
       bodySmall: TextStyle(
           color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
+      titleMedium: TextStyle(
+          color: Colors.black, fontSize: 22, fontWeight: FontWeight.w400),
     ),
     hintColor: Colors.white,
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
@@ -54,6 +56,8 @@ class AppThemes {
           color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
       bodySmall: TextStyle(
           color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+      titleMedium: TextStyle(
+          color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
     ),
     hintColor: Colors.black,
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white),

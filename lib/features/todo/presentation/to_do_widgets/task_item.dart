@@ -40,8 +40,12 @@ class TaskItem extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(task.title,
-                        style: Theme.of(context).textTheme.bodyMedium),
+                    Text(
+                      task.title,
+                      style: Theme.of(context).textTheme.titleMedium,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     Text(
                       date,
                       style: Theme.of(context).textTheme.bodySmall,
